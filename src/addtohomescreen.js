@@ -160,6 +160,7 @@ ath.defaults = {
 	maxDisplayCount: 0,			// absolute maximum number of times the message will be shown to the user (0: no limit)
 	icon: true,					// add touch icon to the message
 	message: '',				// the message can be customized
+	langfb: 'en_us',                        // language fallback
 	validLocation: [],			// list of pages where the message will be shown (array of regexes)
 	onInit: null,				// executed on instance creation
 	onShow: null,				// executed when the message is shown
@@ -183,8 +184,8 @@ _extend(ath, {
 	language: _nav.language && _nav.language.toLowerCase().replace('-', '_') || ''
 });
 
-// falls back to en_us if language is unsupported
-ath.language = ath.language && ath.language in ath.intl ? ath.language : 'en_us';
+// falls back to default language if language is unsupported
+ath.language = ath.language && ath.language in ath.intl ? ath.language : lang_fb;
 
 ath.isMobileSafari = ath.isIDevice && _ua.indexOf('Safari') > -1 && _ua.indexOf('CriOS') < 0;
 ath.OS = ath.isIDevice ? 'ios' : ath.isMobileChrome ? 'android' : ath.isMobileIE ? 'windows' : 'unsupported';
